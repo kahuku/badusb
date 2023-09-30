@@ -1,2 +1,0 @@
-https://github.com/kacperbartocha/pico-badusb
-https://github.com/hak5/usbrubberducky-payloads
